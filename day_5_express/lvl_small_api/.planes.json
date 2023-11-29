@@ -1,0 +1,9 @@
+[
+  {
+    "hersteller": "airbus",
+    "antriebsart": "Jet",
+    "passagiere": 150,
+    "reichweite": 1500,
+    "id": "DUS-AB-1"
+  }
+]
