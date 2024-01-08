@@ -1,0 +1,6 @@
+FROM node:alpine
+WORKDIR /app
+EXPOSE 1337
+COPY . .
+RUN npm i
+CMD [ "node", "--watch", "app.js" ]

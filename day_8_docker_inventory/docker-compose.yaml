@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  database:
+    image: mongo:latest
+    container_name: inventory
+    networks:
+      - backend
+    volumes:
+      - mongodata:/data/db
+  server:
+    build: ./backend
+    container_name: backend
+    ports:
+      - 1337:1337
+    networks:
+      - backend
+      - frontend
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - database
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - 80:5173
+    networks:
+      - frontend
+    volumes:
+      - ./frontend:/app
+networks:
+  backend:
+  frontend:
+volumes:
+  mongodata:
