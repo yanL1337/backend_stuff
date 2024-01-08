@@ -1,0 +1,16 @@
+# Wir nutzen das nodeimage als basis
+FROM node:alpine 
+
+RUN mkdir app
+# wir wechseln das workdirectory
+WORKDIR /app
+# wir kopieren unsere Dateien in das image
+COPY . .
+# wir erstellen alle notwendigen dateien
+RUN npm i
+# wir sagen das wir port 1337 öffnen wollen
+EXPOSE 1337
+
+VOLUME ["/app"]
+# beim starten des containers soll dieser befehl ausgeführt werden
+CMD ["node", "--watch" , "app.js"]
